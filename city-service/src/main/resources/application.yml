@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: city-service
+
+server:
+  # Use random port
+  port: 0
+
+logging:
+  level:
+    root: INFO
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+    preferIpAddress: true
